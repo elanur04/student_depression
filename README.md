@@ -1,7 +1,7 @@
-#Öğrenci Depresyon Analizi ve Tahminleme
+# Öğrenci Depresyon Analizi ve Tahminleme
 Bu proje, öğrencilerin ruh sağlığını etkileyen demografik, akademik ve yaşam tarzı faktörlerini incelemek ve makine öğrenmesi modelleri kullanarak depresyon durumunu tahmin etmek amacıyla geliştirilmiştir. Veri seti üzerinde kapsamlı veri ön işleme, görselleştirme ve sınıflandırma analizleri uygulanmıştır.
 
- #Proje Özeti
+ # Proje Özeti
 Öğrenci depresyonu, akademik başarıyı ve yaşam kalitesini doğrudan etkileyen kritik bir sorundur. 
 Bu çalışmada:
 Veri Temizleme: Eksik verilerin (Financial Stress vb.) mod/medyan ile doldurulması ve tutarsız veri girişlerinin temizlenmesi.
@@ -9,14 +9,14 @@ Veri Temizleme: Eksik verilerin (Financial Stress vb.) mod/medyan ile doldurulma
 Analiz: Depresyon ile akademik baskı, not ortalaması (CGPA) ve aile geçmişi arasındaki ilişkilerin istatistiksel ve görsel analizi.
 Modelleme: Random Forest, KNN, Lojistik Regresyon ve SVM gibi modellerle yüksek doğruluklu tahminleme.
 
-#Veri Seti Özellikleri
+# Veri Seti Özellikleri
 Veri seti 27,901 kayıt ve 18 değişkenden oluşmaktadır:
 Hedef Değişken: Depression (0: Yok, 1: Var)
 Akademik: CGPA, Akademik Baskı, Çalışma Memnuniyeti, Mezuniyet Derecesi.
 Yaşam Tarzı: Uyku Süresi, Beslenme Alışkanlıkları, Günlük Çalışma Saatleri.
 Kişisel: Ailede Ruhsal Hastalık Geçmişi, İntihar Düşüncesi, Finansal Stres.
 
-#Uygulanan Adımlar
+# Uygulanan Adımlar
 
 Veri Ön İşleme: - Degree sütunu; Lisans, Lisansüstü ve Doktora olarak kategorize edildi.
 Kategorik veriler LabelEncoder ve get_dummies ile sayısal forma çevirildi.
@@ -31,12 +31,12 @@ Makine Öğrenmesi:
 Veri seti Eğitim ve Test olarak ayrıldı.
 Modellerin performansı classification_report ve accuracy_score ile değerlendirildi.
 
-#Öne Çıkan Bulgular
+# Öne Çıkan Bulgular
 Akademik Baskı: Depresyon tanısı alan öğrencilerde akademik baskı seviyesinin belirgin şekilde daha yüksek olduğu gözlemlenmiştir.
 Uyku Dengesi: Az uyku ve uzun çalışma saatlerinin (Work_Sleep_Balance) depresyon riskini artırdığı saptanmıştır.
 Aile Geçmişi: Ailesinde ruhsal hastalık geçmişi olan öğrencilerin depresyona daha eğilimli olduğu verilerle desteklenmiştir.
 
-#Kurulum
+# Kurulum
 Projeyi yerel ortamınızda çalıştırmak için:
 
 # Depoyu klonlayın
