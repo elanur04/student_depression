@@ -7,7 +7,7 @@ en iyi modeli kullanan bir **Streamlit** arayüzü içerir.
 
 ## Sonuçlar
 
-Test seti: 5.581 kayıt (verinin %20'si).
+Aşağıdaki değerler notebook içinde kaydedilmiş deney çıktılarıdır; bu düzenlemede modeller yeniden eğitilmedi. Test seti: 5.581 kayıt (verinin %20'si), `random_state=42`.
 
 | Model | Accuracy | F1 (macro) | Not |
 |---|---|---|---|
@@ -16,8 +16,7 @@ Test seti: 5.581 kayıt (verinin %20'si).
 | Random Forest | 0.83 | 0.83 | ROC AUC **0.91** |
 | KNN (k=5) | 0.81 | 0.81 | |
 
-SVM'de eğitim ve test doğruluğu arasındaki fark yaklaşık 2 puan; belirgin bir aşırı
-öğrenme gözlenmedi.
+SVM eğitim/test doğruluğu farkı yaklaşık 2,3 puandır. Tek bir bölünmedeki bu fark, modelin genellenebilirliğini veya aşırı öğrenme bulunmadığını tek başına kanıtlamaz.
 
 ## Veri Seti
 
@@ -76,3 +75,23 @@ Analiz ve modelleme adımlarının tamamı `student_depression.ipynb` dosyasınd
 | `student_depression_dataset.csv` | Ham veri seti |
 
 > Bu proje eğitim amaçlıdır; klinik tanı aracı değildir.
+
+## Çıkarım akışı ve test
+
+Arayüzdeki kategoriler `inference.py` içinde notebook ile aynı kodlara ve aynı 12 sütun sırasına dönüştürülür. Girdi önce `scaler.transform`, ardından `model.predict` işleminden geçer. Önceki arayüzde model yerine kullanılan elle yazılmış puanlama kaldırılmıştır.
+
+Python 3.11 veya 3.12 ile ayrı bir sanal ortam kullanın. Kaydedilmiş iki model dosyası scikit-learn **1.6.1** ile üretildiği için bu sürüm sabitlenmiştir. Yalnızca güvendiğiniz model dosyalarını yükleyin; farklı scikit-learn sürümleri arasında uyumluluk garanti edilmez ([resmî belge](https://scikit-learn.org/stable/model_persistence.html)).
+
+```bash
+python -m unittest discover -p "test_*.py"
+```
+
+Testler özellik sırasını, kategori dönüşümlerini, gerçek model çıkarımını, başka çalışma dizininden model yüklemeyi ve Streamlit form gönderimini kontrol eder.
+
+## Sınırlamalar ve sonraki adımlar
+
+- Eğitim amaçlı bir sınıflandırma demosudur; klinik doğrulaması yoktur.
+- Notebook'ta bazı eksik değer doldurma işlemleri eğitim/test ayrımından önce yapılır. Bu, test bilgisinin ön işlemeye sızmasına yol açabilir. Sonraki deneyde bu adımlar yalnızca eğitim verisine uyan bir Pipeline içine alınmalıdır.
+- `Work_Sleep_Balance` araştırılmış, ancak son modelin girdilerinden çıkarılmıştır.
+- Veri setinin özgün kaynak bağlantısı ve kullanım lisansı bu depoda belgelenmemiştir; dış kullanım öncesinde doğrulanmalıdır.
+- Yeni bir veri setiyle bağımsız doğrulama ve alt gruplar bazında hata analizi yapılmamıştır.
